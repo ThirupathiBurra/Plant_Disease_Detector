@@ -18,7 +18,7 @@ An AI-powered web app for detecting plant diseases from leaf images using a trai
 
 ## 🔍 Demo
 
-[🔗 Click here to view the live Streamlit app](https://your-streamlit-app-link)
+[🔗 Click here to view the live Streamlit app](https://huggingface.co/spaces/Thiru28/Leaf)
 
 ---
 
