@@ -1,7 +1,10 @@
-streamlit
-tensorflow
+# requirements.txt
 google.generativeai 
 Pillow
 numpy
 pandas
 python-dotenv
+streamlit==1.27.2
+tensorflow==2.12.0
+
+
