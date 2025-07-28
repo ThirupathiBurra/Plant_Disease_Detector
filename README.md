@@ -1,6 +1,6 @@
 # 🌿 Plant Disease Detector
 
-An AI-powered web app for detecting plant diseases from leaf images using a trained **TensorFlow Lite model**, **Streamlit**, and **Gemini Pro API** for explanations.
+An AI-powered web app for detecting plant diseases from leaf images using a trained **TensorFlow Lite model**, **Streamlit**, and **Gemini API** for explanations.
 
 ---
 ## MODEL USED  
