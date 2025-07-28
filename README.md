@@ -3,7 +3,8 @@
 An AI-powered web app for detecting plant diseases from leaf images using a trained **TensorFlow Lite model**, **Streamlit**, and **Gemini Pro API** for explanations.
 
 ---
-
+## MODEL USED  
+  --By combining the robustness of VGG16 CNNs with the contextual capabilities of Gemini AI, this app enables accessible and smart plant disease diagnostics.
 ## 🚀 Features
 
 - 📸 Upload plant leaf image and detect disease instantly
