@@ -19,7 +19,6 @@ api_key = os.getenv("GOOGLE_API_KEY")
 if not api_key:
     st.error("⚠️ Google Gemini API key not found. Please set it in the .env file.")
     st.stop()
-
 genai.configure(api_key=api_key)
 
 # ======================================
@@ -64,18 +63,23 @@ if uploaded_file:
     )
     confidence_percent = float(confidence) * 100
 
-    # Display results
-    st.success(f"✅ Prediction: {label} ({confidence_percent:.2f}% confidence)")
-    st.markdown(f"**About:** {description}")
-    st.markdown(f"**Treatment:** {treatment}")
+    MIN_CONFIDENCE = 40.0  # adjust as needed!
 
-    # 🔍 GPT Button
-    if st.button("🔍 Learn more about this disease"):
+    if confidence_percent < MIN_CONFIDENCE:
+        st.warning("⚠️ The uploaded image does not appear to be a valid leaf image. Please upload a clear leaf photo.")
+    else:
+        # Store session state for multipage navigation
         st.session_state['predicted_label'] = label
-        st.switch_page("pages/gemini_explainer.py")
+        st.session_state['prediction_confidence'] = confidence_percent
+        st.session_state['prediction_description'] = description
+        st.session_state['prediction_treatment'] = treatment
 
-    # 📄 Report download
-    report = f"""
+        st.success(f"✅ Prediction: {label} ({confidence_percent:.2f}% confidence)")
+        st.markdown(f"**About:** {description}")
+        st.markdown(f"**Treatment:** {treatment}")
+
+        # 📄 Report download
+        report = f"""
 📋 **Leaf Disease Report**
 
 **Prediction:** {label}
@@ -83,9 +87,9 @@ if uploaded_file:
 **About:** {description}
 **Treatment:** {treatment}
 """
-    st.download_button(
-        label="📄 Download Report",
-        data=report.encode("utf-8"),
-        file_name=f"{label}_report.txt",
-        mime="text/plain"
-    )
+        st.download_button(
+            label="📄 Download Report",
+            data=report.encode("utf-8"),
+            file_name=f"{label}_report.txt",
+            mime="text/plain"
+        )
